@@ -67,7 +67,7 @@ class FullTests(util.TempDirTestCaseBase):
     accumulator = util.RecordingProblemAccumulator(self)
     problems = transitfeed.ProblemReporter(accumulator)
     schedule = transitfeed.Loader('one_stop.zip', problems=problems).Load()
-    self.assertEquals(len(schedule.GetStopList()), 1)
+    self.assertEqual(len(schedule.GetStopList()), 1)
     self.assertFalse(os.path.exists('transitfeedcrash.txt'))
 
   def testCommandLineError(self):

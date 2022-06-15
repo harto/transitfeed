@@ -545,9 +545,9 @@ class RecordingProblemAccumulator(transitfeed.ProblemAccumulatorInterface):
         the exception object
     """
     e = self.PopException(type_name)
-    self._test_case.assertEquals(column_name, e.column_name)
+    self._test_case.assertEqual(column_name, e.column_name)
     if file_name:
-      self._test_case.assertEquals(file_name, e.file_name)
+      self._test_case.assertEqual(file_name, e.file_name)
     return e
 
   def PopInvalidValue(self, column_name, file_name=None):
@@ -564,9 +564,9 @@ class RecordingProblemAccumulator(transitfeed.ProblemAccumulatorInterface):
 
   def PopDuplicateColumn(self, file_name, header, count):
     e = self.PopException("DuplicateColumn")
-    self._test_case.assertEquals(file_name, e.file_name)
-    self._test_case.assertEquals(header, e.header)
-    self._test_case.assertEquals(count, e.count)
+    self._test_case.assertEqual(file_name, e.file_name)
+    self._test_case.assertEqual(header, e.header)
+    self._test_case.assertEqual(count, e.count)
     return e
 
   def _SortExceptionGroups(self):

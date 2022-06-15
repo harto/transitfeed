@@ -298,7 +298,7 @@ class TripHasStopTimeValidationTestCase(util.ValidationTestCase):
     e = self.accumulator.PopException('OtherProblem')  # pop frequency error
     self.assertTrue(e.FormatProblem().find('Frequencies defined, but') != -1)
     self.assertTrue(e.FormatProblem().find('given in trip 054C-00') != -1)
-    self.assertEquals(transitfeed.TYPE_ERROR, e.type)
+    self.assertEqual(transitfeed.TYPE_ERROR, e.type)
     self.accumulator.AssertNoMoreExceptions()
     trip.ClearFrequencies()
 
@@ -547,24 +547,24 @@ class TripGetStopTimesTestCase(SingleTripTestCase):
         self.stop2, arrival_time="5:15:00", departure_time="5:16:00")
 
     stop_times = self.trip.GetStopTimes()
-    self.assertEquals(2, len(stop_times))
+    self.assertEqual(2, len(stop_times))
     st = stop_times[0]
-    self.assertEquals(self.stop1.stop_id, st.stop_id)
-    self.assertEquals('05:11:00', st.arrival_time)
-    self.assertEquals('05:12:00', st.departure_time)
-    self.assertEquals(u'Stop Headsign', st.stop_headsign)
-    self.assertEquals(1, st.pickup_type)
-    self.assertEquals(2, st.drop_off_type)
-    self.assertEquals(100.0, st.shape_dist_traveled)
-    self.assertEquals(1, st.timepoint)
+    self.assertEqual(self.stop1.stop_id, st.stop_id)
+    self.assertEqual('05:11:00', st.arrival_time)
+    self.assertEqual('05:12:00', st.departure_time)
+    self.assertEqual(u'Stop Headsign', st.stop_headsign)
+    self.assertEqual(1, st.pickup_type)
+    self.assertEqual(2, st.drop_off_type)
+    self.assertEqual(100.0, st.shape_dist_traveled)
+    self.assertEqual(1, st.timepoint)
 
     st = stop_times[1]
-    self.assertEquals(self.stop2.stop_id, st.stop_id)
-    self.assertEquals('05:15:00', st.arrival_time)
-    self.assertEquals('05:16:00', st.departure_time)
+    self.assertEqual(self.stop2.stop_id, st.stop_id)
+    self.assertEqual('05:15:00', st.arrival_time)
+    self.assertEqual('05:16:00', st.departure_time)
 
     tuples = self.trip.GetStopTimesTuples()
-    self.assertEquals(2, len(tuples))
+    self.assertEqual(2, len(tuples))
     self.assertEqual(
         (self.trip.trip_id, "05:11:00", "05:12:00", self.stop1.stop_id,
          1, u'Stop Headsign', 1, 2, 100.0, 1),

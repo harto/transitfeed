@@ -171,8 +171,8 @@ class TestPoly(ShapeLibTestBase):
     (before, after) = \
        poly.CutAtClosestPoint(Point(0, 0.3, 0.7).Normalize())
 
-    self.assert_(2 == before.GetNumPoints())
-    self.assert_(2 == before.GetNumPoints())
+    self.assertTrue(2 == before.GetNumPoints())
+    self.assertTrue(2 == before.GetNumPoints())
     self.assertPointApproxEq(
         Point(0, 0.707106781187, 0.707106781187), before.GetPoint(1))
 
@@ -277,11 +277,11 @@ class TestCollection(ShapeLibTestBase):
     collection.AddPoly(poly)
     match = collection.FindMatchingPolys(Point(0, 1, 0),
                                          Point(0, 0, 1))
-    self.assert_(len(match) == 1 and match[0] == poly)
+    self.assertTrue(len(match) == 1 and match[0] == poly)
 
     match = collection.FindMatchingPolys(Point(0, 1, 0),
                                          Point(0, 1, 0))
-    self.assert_(len(match) == 0)
+    self.assertTrue(len(match) == 0)
 
     poly = Poly()
     poly.AddPoint(Point.FromLatLng(45.585212,-122.586136))
@@ -292,19 +292,19 @@ class TestCollection(ShapeLibTestBase):
     match = collection.FindMatchingPolys(
         Point.FromLatLng(45.585212,-122.586136),
         Point.FromLatLng(45.586654,-122.587595))
-    self.assert_(len(match) == 1 and match[0] == poly)
+    self.assertTrue(len(match) == 1 and match[0] == poly)
 
     match = collection.FindMatchingPolys(
         Point.FromLatLng(45.585219,-122.586136),
         Point.FromLatLng(45.586654,-122.587595))
-    self.assert_(len(match) == 1 and match[0] == poly)
+    self.assertTrue(len(match) == 1 and match[0] == poly)
 
     self.assertApproxEq(0.0, poly.GreedyPolyMatchDist(poly))
 
     match = collection.FindMatchingPolys(
         Point.FromLatLng(45.587212,-122.586136),
         Point.FromLatLng(45.586654,-122.587595))
-    self.assert_(len(match) == 0)
+    self.assertTrue(len(match) == 0)
 
 
 class TestGraph(ShapeLibTestBase):
@@ -342,15 +342,15 @@ class TestGraph(ShapeLibTestBase):
     graph.AddPoly(poly2)
     graph.AddPoly(poly3)
     path = graph.ShortestPath(p1, p4)
-    self.assert_(path is not None)
+    self.assertTrue(path is not None)
     self.assertPointsApproxEq([p1, p4], path.GetPoints())
 
     path = graph.ShortestPath(p1, p3)
-    self.assert_(path is not None)
+    self.assertTrue(path is not None)
     self.assertPointsApproxEq([p1, p4, p3], path.GetPoints())
 
     path = graph.ShortestPath(p3, p1)
-    self.assert_(path is not None)
+    self.assertTrue(path is not None)
     self.assertPointsApproxEq([p3, p4, p1], path.GetPoints())
 
   def testFindShortestMultiPointPath(self):
@@ -366,7 +366,7 @@ class TestGraph(ShapeLibTestBase):
     graph.AddPoly(poly2)
     graph.AddPoly(poly3)
     path = graph.FindShortestMultiPointPath([p1, p3, p4])
-    self.assert_(path is not None)
+    self.assertTrue(path is not None)
     self.assertPointsApproxEq([p1, p2, p3, p4], path.GetPoints())
 
 

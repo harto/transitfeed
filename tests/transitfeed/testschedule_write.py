@@ -99,11 +99,11 @@ class ScheduleBuilderTestCase(util.TempFileTestCaseBase):
     read_schedule = \
         transitfeed.Loader(self.tempfilepath, problems=problems,
                            extra_validation=True).Load()
-    self.assertEquals(u'\u020b Fly Agency',
+    self.assertEqual(u'\u020b Fly Agency',
                       read_schedule.GetDefaultAgency().agency_name)
-    self.assertEquals(u'\u03b2',
+    self.assertEqual(u'\u03b2',
                       read_schedule.GetRoute(route.route_id).route_short_name)
-    self.assertEquals(u'to remote \u020b station',
+    self.assertEqual(u'to remote \u020b station',
                       read_schedule.GetTrip(trip.trip_id).trip_headsign)
 
   def testBuildSimpleFeed(self):

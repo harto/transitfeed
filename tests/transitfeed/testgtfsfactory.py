@@ -190,7 +190,7 @@ class TestGtfsFactoryUser(util.TestCase):
 
   def AssertFactoryIsSavedAndReturned(self, instance, factory):
     instance.SetGtfsFactory(factory)
-    self.assertEquals(factory, instance.GetGtfsFactory())
+    self.assertEqual(factory, instance.GetGtfsFactory())
 
   def testClasses(self):
     class FakeGtfsFactory(object):

@@ -107,7 +107,7 @@ class DeprecatedFieldNamesTestCase(util.MemoryZipTestCase):
     schedule = self.MakeLoaderAndLoad(self.problems,
                                       gtfs_factory=self.gtfs_factory)
     e = self.accumulator.PopException("DeprecatedColumn")
-    self.assertEquals("agency_url", e.column_name)
+    self.assertEqual("agency_url", e.column_name)
     self.accumulator.AssertNoMoreExceptions()
 
   def testDeprecatedFieldDefaultsToNoneIfNotProvided(self):
